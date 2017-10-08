@@ -1,0 +1,30 @@
+version: '2'
+services:
+  test:
+    image: node:8
+    working_dir: /app
+    links:
+      - redis
+    volumes:
+      - .:/app
+    environment:
+      - NODE_ENV=test
+      - REDIS_GENERAL_OVERRIDE_HOST=pal_redis
+    command: >
+      /bin/sh -c "
+        export REDIS_GENERAL_OVERRIDE_PORT=$$PAL_REDIS_PORT_6379_TCP_PORT;
+        npm install
+        npm i -g mocha redis-server
+        mocha test
+      "
+
+  redis:
+    image: redis
+    ports:
+      - "6379"
+    container_name: pal_redis
+    command:
+      /bin/sh -c "
+        npm i -g redis-server
+        redis-server --port 6739
+      "

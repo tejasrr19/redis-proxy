@@ -1,0 +1,26 @@
+{
+  "client1": {
+    "redisHost": "localhost",
+    "redisPort": 6379,
+    "capacity": 5,
+    "expiry": 10000
+  },
+  "client2": {
+    "redisHost": "localhost",
+    "redisPort": 6379,
+    "capacity": 2,
+    "expiry": 500
+  },
+  "client3": {
+    "redisHost": "localhost",
+    "redisPort": 6379,
+    "capacity": 2,
+    "expiry": 10000
+  },
+  "client4": {
+    "redisHost": "localhost",
+    "redisPort": 6379,
+    "capacity": 2,
+    "expiry": 10000
+  }
+}
