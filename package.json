@@ -6,7 +6,8 @@
   "scripts": {
     "pretest": "docker-compose rm --force test; npm run start-services",
     "test": "docker-compose up test",
-    "start-services": "docker-compose up -d redis"
+    "start-services": "docker-compose up -d redis",
+    "stop-services": "docker-compose stop"
   },
   "keywords": [],
   "author": "",

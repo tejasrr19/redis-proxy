@@ -14,7 +14,7 @@ services:
       /bin/sh -c "
         export REDIS_GENERAL_OVERRIDE_PORT=$$REDIS_PORT_6379_TCP_PORT;
         npm install
-        npm i -g mocha redis-cli
+        npm i -g mocha
         mocha test
       "
 
