@@ -70,13 +70,14 @@ console.log(test());
 ```
 ## Time Spent
 
-* Redis Protocol - ~ 1.5 hrs (some learning curve)
+* Redis Protocol - ~ 1 hrs (some learning curve)
 * Single Backing Instance - ~ 1 hr 
 * Cached GET - ~ 0.5 hr
 * Global Expiry - 0.25 hr
 * LRU Eviction - 1.5 hr
 * Fixed key size - 0.5 hr
 * Tests - 1 hrs
+* Docker-compose configuration - 1 hr (learning curve)
 * Documentation - 0.5 hr
 
 ## NOT DONE
