@@ -77,6 +77,7 @@ console.log(test());
 * LRU Eviction - 1.5 hr
 * Fixed key size - 0.5 hr
 * Tests - 1 hrs
+* Docker-compose configuration - 1 hr (learning curve)
 * Documentation - 0.5 hr
 
 ## NOT DONE
