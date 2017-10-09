@@ -8,16 +8,18 @@ chai.use(assertArrays);
 
 
 describe('========= Series Calls Test ==========', () => {
-  var client;
+  var client1;
+  var client2;
   before('Create client instance', (done) => {
-    client = new LocalCache(config);
+    client1 = new LocalCache(config);
+    client2 = new LocalCache(config);
     done();
   });
 
   it('Should set values to backing redis', () => {
     return new Promise(async (resolve) => {
-      await client.setBackingRedis('foo', 'bar');
-      await client.setBackingRedis('zoo', 'car');
+      await client1.setBackingRedis('foo', 'bar');
+      await client2.setBackingRedis('zoo', 'car');
       resolve();
     });
   });
@@ -26,10 +28,10 @@ describe('========= Series Calls Test ==========', () => {
     return new Promise(async (resolve) => {
       async.series([
         async function() {
-          return await client.get('foo');
+          return await client1.get('foo');
         },
         async function() {
-          return await client.get('zoo');
+          return await client2.get('zoo');
         }
       ], function(err, results) {
         if(err) {
@@ -37,27 +39,6 @@ describe('========= Series Calls Test ==========', () => {
         } else {
           console.log(results);
           expect(results).to.be.equalTo(['bar', 'car']);
-        }
-      });
-      resolve();
-    });
-  });
-
-  it('Should make concurrent calls in parallel if not in Local Cache', () => {
-    return new Promise(async (resolve) => {
-      async.parallel([
-        async function() {
-          return await client.get('foo');
-        },
-        async function() {
-          return await client.get('zoo');
-        }
-      ], function(err, results) {
-        if(err) {
-          console.error(err);
-        } else {
-          console.log(results);
-          expect(results).to.be.equalTo(['zoo', 'car']);
         }
       });
       resolve();
